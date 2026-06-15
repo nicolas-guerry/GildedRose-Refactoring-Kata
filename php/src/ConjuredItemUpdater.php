@@ -2,28 +2,18 @@
 
 namespace GildedRose;
 
-class ConjuredItemUpdater implements ItemUpdater
+class ConjuredItemUpdater extends BaseItemUpdater implements ItemUpdater
 {
     public function update(Item $item): void
     {
         $item->sellIn--;
 
-        if ($item->quality > 0) {
-            $item->quality--;
-        }
+        $this->reduceQuality($item);
+        $this->reduceQuality($item);
 
-        if ($item->quality > 0) {
-            $item->quality--;
+        if($this->isItemExpired($item)) {
+            $this->reduceQuality($item);
+            $this->reduceQuality($item);
         }
-
-        if ($item->sellIn < 0) {
-            if ($item->quality > 0) {
-                $item->quality--;
-            }
-            if ($item->quality > 0) {
-                $item->quality--;
-            }
-        }
-
     }
 }

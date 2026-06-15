@@ -2,7 +2,7 @@
 
 namespace GildedRose;
 
-class SulfurasItemUpdater implements ItemUpdater
+class SulfurasItemUpdater extends BaseItemUpdater implements ItemUpdater
 {
     public function update(Item $item): void
     {

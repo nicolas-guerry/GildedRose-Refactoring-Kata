@@ -2,18 +2,16 @@
 
 namespace GildedRose;
 
-class NormalItemUpdater implements ItemUpdater
+class NormalItemUpdater extends BaseItemUpdater implements ItemUpdater
 {
     public function update(Item $item): void
     {
         $item->sellIn--;
 
-        if ($item->quality > 0) {
-            $item->quality--;
-        }
+        $this->reduceQuality($item);
 
-        if ($item->sellIn < 0 && $item->quality > 0) {
-            $item->quality--;
+        if ($this->isItemExpired($item)) {
+            $this->reduceQuality($item);
         }
 
     }

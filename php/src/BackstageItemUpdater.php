@@ -2,26 +2,26 @@
 
 namespace GildedRose;
 
-class BackstageItemUpdater implements ItemUpdater
+class BackstageItemUpdater extends BaseItemUpdater implements ItemUpdater
 {
     public function update(Item $item): void
     {
 
         $item->sellIn--;
 
-        if ($item->sellIn < 0) {
+        if ($this->isItemExpired($item)) {
             $item->quality = 0;
             return;
         }
 
-        if ($item->quality < 50) {
-            $item->quality++;
-            if ($item->sellIn < 11 && $item->quality < 50) {
-                $item->quality++;
-            }
-            if ($item->sellIn < 6 && $item->quality < 50) {
-                $item->quality++;
-            }
+        $this->raiseQuality($item);
+
+        if ($item->sellIn < 10) {
+            $this->raiseQuality($item);
+        }
+
+        if ($item->sellIn < 5) {
+            $this->raiseQuality($item);
         }
 
     }
