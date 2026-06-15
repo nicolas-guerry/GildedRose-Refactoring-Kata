@@ -2,7 +2,7 @@
 
 namespace GildedRose;
 
-class NormalItemUpdater extends BaseItemUpdater implements ItemUpdater
+class NormalItemUpdater extends BaseItemUpdater
 {
     public function update(Item $item): void
     {

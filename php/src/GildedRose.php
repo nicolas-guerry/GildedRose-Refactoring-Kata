@@ -20,8 +20,7 @@ final class GildedRose
     public function updateQuality(): void
     {
         foreach ($this->items as $item) {
-            $updater = $this->itemUpdaterFactory->getUpdater($item);
-            $updater->update($item);
+            $this->itemUpdaterFactory->getUpdater($item)->update($item);
         }
 
     }

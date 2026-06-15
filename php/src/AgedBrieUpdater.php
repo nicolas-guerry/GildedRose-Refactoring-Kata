@@ -2,7 +2,7 @@
 
 namespace GildedRose;
 
-class AgedBrieUpdater extends BaseItemUpdater implements ItemUpdater
+class AgedBrieUpdater extends BaseItemUpdater
 {
     public function update(Item $item): void
     {

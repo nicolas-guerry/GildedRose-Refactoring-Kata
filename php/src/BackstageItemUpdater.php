@@ -2,7 +2,7 @@
 
 namespace GildedRose;
 
-class BackstageItemUpdater extends BaseItemUpdater implements ItemUpdater
+class BackstageItemUpdater extends BaseItemUpdater
 {
     public function update(Item $item): void
     {

@@ -2,7 +2,7 @@
 
 namespace GildedRose;
 
-class ConjuredItemUpdater extends BaseItemUpdater implements ItemUpdater
+class ConjuredItemUpdater extends BaseItemUpdater
 {
     public function update(Item $item): void
     {
