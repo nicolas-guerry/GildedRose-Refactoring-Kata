@@ -6,14 +6,19 @@ namespace GildedRose;
 
 final class GildedRose
 {
+    private ItemUpdaterFactory $itemUpdaterFactory;
+
     /**
      * @param Item[] $items
      */
     public function __construct(
-        private array $items
+        private array $items,
     ) {
+        $this->itemUpdaterFactory = new ItemUpdaterFactory();
     }
 
+    // old function
+    /**
     public function updateQuality(): void
     {
         foreach ($this->items as $item) {
@@ -63,5 +68,14 @@ final class GildedRose
                 }
             }
         }
+    } */
+
+    public function updateQuality(): void
+    {
+        foreach ($this->items as $item) {
+            $updater = $this->itemUpdaterFactory->getUpdater($item);
+            $updater->update($item);
+        }
+
     }
 }
